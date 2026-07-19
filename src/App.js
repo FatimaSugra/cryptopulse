@@ -77,7 +77,7 @@ setLastUpdated(
 
   useEffect(() => {
     fetchCryptoData();
-  }, []);
+  }, [fetchCryptoData]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -85,7 +85,7 @@ setLastUpdated(
     }, 60000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [fetchCryptoData]);
 
   useEffect(() => {
     const filtered = coins.filter((coin) => {
