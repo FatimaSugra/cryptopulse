@@ -41,8 +41,8 @@ const fetchCryptoData = useCallback(async () => {
         id: coin.symbol.toUpperCase(),
         name: coin.name,
         image: coin.image,
-        price: coin.current_price,
-        change: coin.price_change_percentage_24h,
+        price: coin.current_price ?? 0,
+        change: coin.price_change_percentage_24h ?? 0,
         volume: coin.total_volume.toLocaleString(),
         sparkline: coin.sparkline_in_7d.price.map((price) => ({
           price,

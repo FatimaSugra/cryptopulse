@@ -35,7 +35,7 @@ export default function ChartPanel({ coin }) {
             $
             {coin.price >= 1
               ? coin.price.toLocaleString()
-              : coin.price.toFixed(4)}
+              : (coin.price ?? 0).toFixed(4)}
           </h1>
 
           <div
@@ -51,7 +51,7 @@ export default function ChartPanel({ coin }) {
               <TrendingDown size={16} />
             )}
 
-            {coin.change.toFixed(2)}%
+           {(coin.change ?? 0).toFixed(2)}%
           </div>
 
         </div>

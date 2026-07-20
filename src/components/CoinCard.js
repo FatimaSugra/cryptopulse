@@ -38,7 +38,7 @@ export default function CoinCard({
           $
           {coin.price >= 1
             ? coin.price.toLocaleString()
-            : coin.price.toFixed(4)}
+            : (coin.price ?? 0).toFixed(4)}
         </h3>
 
         <div
@@ -54,7 +54,7 @@ export default function CoinCard({
             <TrendingDown size={14} />
           )}
 
-          {coin.change.toFixed(2)}%
+         {(coin.change ?? 0).toFixed(2)}%
         </div>
 
       </div>
