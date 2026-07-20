@@ -1,4 +1,4 @@
-import { useState, useEffect,} from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -24,7 +24,7 @@ export default function App() {
 
   const [lastUpdated, setLastUpdated] = useState("");
 
-  const fetchCryptoData = async () => {
+const fetchCryptoData = useCallback(async () => {
     try {
       setLoading(true);
       setError("");
@@ -73,11 +73,11 @@ setLastUpdated(
     } finally {
       setLoading(false);
     }
-  };
+  },[selectedCoin]);
 // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchCryptoData();
-  }, []);
+  }, [fetchCryptoData]);
 // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const timer = setInterval(() => {
@@ -85,7 +85,7 @@ setLastUpdated(
     }, 60000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [fetchCryptoData]);
 
   useEffect(() => {
     const filtered = coins.filter((coin) => {
